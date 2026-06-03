@@ -1,0 +1,36 @@
+# ============================================================
+# Persona Backend — .gitignore
+# ============================================================
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+venv/
+.venv/
+
+# Environment & Secrets
+.env
+firebase-service-account.json
+
+# Database (ローカルのみ)
+*.db
+*.sqlite3
+
+# Logs
+*.log
+
+# Temp
+tmp/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker (ローカルビルド)
+.docker/

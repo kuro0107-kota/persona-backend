@@ -1,0 +1,44 @@
+# ============================================================
+# Persona Backend — Production Dependencies
+# ============================================================
+
+# Web Framework
+fastapi==0.111.0
+uvicorn==0.30.1
+starlette==0.37.2
+python-multipart==0.0.9
+
+# Database
+SQLAlchemy==2.0.30
+aiosqlite==0.22.1
+
+# AI / LLM
+anthropic==0.105.2
+sentence-transformers==5.5.1
+
+# Scheduler (全エージェント自律稼働)
+APScheduler==3.10.4
+
+# HTTP Client
+httpx==0.28.1
+aiohttp==3.9.5
+
+# Data / Serialization
+pydantic==2.7.4
+orjson==3.11.9
+ujson==5.12.1
+
+# Image Processing
+pillow==12.2.0
+
+# SNS
+tweepy==4.16.0
+
+# Firebase (Push Notifications)
+firebase-admin==7.4.0
+
+# Vector Search
+qdrant-client==1.9.1
+
+# Utilities
+python-dotenv==1.0.1

@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.env
+*.db
+*.sqlite3
+tmp/
+.git/
+.gitignore
+firebase-service-account.json
+*.log

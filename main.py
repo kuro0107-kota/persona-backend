@@ -111,6 +111,81 @@ class SimulationResponse(BaseModel):
     target_user_id: str = ""
     target_user_profile: dict = {}
 
+@app.get("/")
+async def root():
+    """Persona API ダッシュボード"""
+    from fastapi.responses import HTMLResponse
+    html = """<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Persona API — 24h Cloud Dashboard</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',sans-serif;background:#0a0a0f;color:#e0e0e0;min-height:100vh;
+background:linear-gradient(135deg,#0a0a1a 0%,#1a0a2e 50%,#0a1a2e 100%)}
+.container{max-width:800px;margin:0 auto;padding:40px 20px}
+h1{font-size:2.5em;background:linear-gradient(135deg,#a855f7,#06b6d4);-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;margin-bottom:8px}
+.subtitle{color:#888;font-size:1.1em;margin-bottom:40px}
+.status{display:inline-flex;align-items:center;gap:8px;background:#0f2a1a;border:1px solid #22c55e;
+border-radius:20px;padding:6px 16px;color:#22c55e;font-weight:600;margin-bottom:30px}
+.dot{width:10px;height:10px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+border-radius:16px;padding:24px;margin-bottom:20px;backdrop-filter:blur(10px)}
+.card h2{font-size:1.2em;color:#a855f7;margin-bottom:16px}
+table{width:100%;border-collapse:collapse}
+td{padding:8px 12px;border-bottom:1px solid rgba(255,255,255,.06)}
+td:first-child{color:#888;width:40%}
+a{color:#06b6d4;text-decoration:none}
+a:hover{text-decoration:underline}
+.footer{text-align:center;color:#444;margin-top:40px;font-size:.85em}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>✦ Persona API</h1>
+<p class="subtitle">AI恋愛シミュレーション × 仮想企業自律運営</p>
+<div class="status"><span class="dot"></span> 24時間稼働中</div>
+
+<div class="card">
+<h2>🏢 AI仮想企業（11名）</h2>
+<table>
+<tr><td>👑 CEO</td><td>毎日8:00 — 経営報告書</td></tr>
+<tr><td>📈 CFO</td><td>毎日8:00 / 20:00 — KPI分析</td></tr>
+<tr><td>📣 CMO</td><td>毎日6:00 — SNSコンテンツ生成</td></tr>
+<tr><td>📊 CPO</td><td>毎日10:00 — プロダクト改善</td></tr>
+<tr><td>🛡️ CTO</td><td>毎日2:00 — 技術レビュー</td></tr>
+<tr><td>✅ QA</td><td>30分ごと — 品質チェック</td></tr>
+<tr><td>💬 CS / 💰 経理 / 📋 総務 / 🔬 Research / ⚖️ Legal</td><td>日次稼働</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h2>🔗 APIエンドポイント</h2>
+<table>
+<tr><td>GET</td><td><a href="/health">/health</a></td></tr>
+<tr><td>GET</td><td><a href="/api/v1/agents/status">/api/v1/agents/status</a></td></tr>
+<tr><td>GET</td><td><a href="/api/v1/agents/schedule">/api/v1/agents/schedule</a></td></tr>
+<tr><td>POST</td><td>/api/v1/simulate</td></tr>
+<tr><td>POST</td><td>/api/v1/agents/run/{agent_name}</td></tr>
+<tr><td>GET</td><td><a href="/api/v1/tags">/api/v1/tags</a></td></tr>
+<tr><td>POST</td><td>/api/v1/date-plan/suggest</td></tr>
+<tr><td>GET</td><td><a href="/docs">/docs</a> (Swagger UI)</td></tr>
+</table>
+</div>
+
+<div class="footer">
+Persona v1.0 — Powered by Claude AI × Railway Cloud<br>
+PCが閉じていても、AIが24時間働き続けています。
+</div>
+</div>
+</body>
+</html>"""
+    return HTMLResponse(content=html)
+
 @app.get("/health")
 async def health_check():
     return {"status": "healthy"}
